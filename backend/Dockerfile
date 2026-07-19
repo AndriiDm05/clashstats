@@ -2,12 +2,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
-# Copy csproj and restore dependencies
-COPY *.csproj ./
+# Copy csproj from the backend folder and restore dependencies
+COPY backend/*.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build release
-COPY . ./
+# Copy everything else from the backend folder and build release
+COPY backend/ ./
 RUN dotnet publish -c Release -o out
 
 # Stage 2: Run the compiled binaries
