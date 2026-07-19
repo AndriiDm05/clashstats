@@ -1,5 +1,5 @@
 # Stage 1: Build the C# application
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build-env
 WORKDIR /app
 
 # Copy csproj from the backend folder and restore dependencies
@@ -11,7 +11,7 @@ COPY backend/ ./
 RUN dotnet publish -c Release -o out
 
 # Stage 2: Run the compiled binaries
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
