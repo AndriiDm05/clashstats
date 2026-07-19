@@ -1,0 +1,8 @@
+## VS Caches
+.vs/
+[Bb]in/
+[Oo]bj/
+
+## Frontend
+node_modules/
+dist/
